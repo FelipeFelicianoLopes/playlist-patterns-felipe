@@ -15,12 +15,15 @@ public class ProtectedAudioStreamProxy implements AudioStream {
 
 
   public ProtectedAudioStreamProxy(Track track, Subscription plan, Supplier<AudioStream> loader) {
-    throw new UnsupportedOperationException();
 
-    this.realStream
-    this.loader = loader
-    this.cachedBytes = cachedBytes
-    this.
+
+    if (loader == null || track == null || plan == null){
+      throw new UnsupportedOperationException();
+    }
+
+    this.loader = loader;
+    this.track = track;
+    this.plan = plan;
   }
 
   public ProtectedAudioStreamProxy(Track track, Subscription plan) {
