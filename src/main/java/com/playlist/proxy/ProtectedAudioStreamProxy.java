@@ -8,6 +8,7 @@ import java.util.function.Supplier;
 public class ProtectedAudioStreamProxy implements AudioStream {
 
   private final Subscription plan;
+  private final Track track;
   private final Supplier<AudioStream> loader;
   private AudioStream realStream;
   private byte[] cachedBytes;
@@ -15,6 +16,11 @@ public class ProtectedAudioStreamProxy implements AudioStream {
 
   public ProtectedAudioStreamProxy(Track track, Subscription plan, Supplier<AudioStream> loader) {
     throw new UnsupportedOperationException();
+
+    this.realStream
+    this.loader = loader
+    this.cachedBytes = cachedBytes
+    this.
   }
 
   public ProtectedAudioStreamProxy(Track track, Subscription plan) {
