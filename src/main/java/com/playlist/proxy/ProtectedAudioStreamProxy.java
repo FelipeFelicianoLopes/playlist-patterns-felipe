@@ -8,36 +8,41 @@ import java.util.function.Supplier;
 public class ProtectedAudioStreamProxy implements AudioStream {
 
   private final Subscription plan;
-  private final Track track;
   private final Supplier<AudioStream> loader;
+
   private AudioStream realStream;
   private byte[] cachedBytes;
-
+  private  final Track track;
 
   public ProtectedAudioStreamProxy(Track track, Subscription plan, Supplier<AudioStream> loader) {
 
 
-    if (loader == null || track == null || plan == null){
-      throw new UnsupportedOperationException();
+    if (track == null || plan == null || loader == null) {
+      throw new IllegalArgumentException();
     }
 
-    this.loader = loader;
     this.track = track;
     this.plan = plan;
+    this.loader = loader;
   }
 
+
   public ProtectedAudioStreamProxy(Track track, Subscription plan) {
-    throw new UnsupportedOperationException();
+    if (track == null || plan == null){throw new IllegalArgumentException();}
+
+    this.track = track;
+    this.plan = plan;
+    this.loader = () -> new RemoteAudioStream(track);
   }
 
 
   public boolean isLoaded() {
-    throw new UnsupportedOperationException();
+    return realStream != null;
   }
 
   @Override
   public String getTrackId() {
-    throw new UnsupportedOperationException();
+    return track.id();
   }
 
 
