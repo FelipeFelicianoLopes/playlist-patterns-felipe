@@ -19,25 +19,22 @@ public class TrackItem implements MediaItem {
       return track;
     }
 
-  @Override
-  public String getName() {
-    return track.title();
-  }
+    @Override
+    public String getName() {
+    return track.title();}
 
-  @Override
-  public int getDurationSeconds() {
-    return track.durationSeconds();
-    }
+    @Override
+    public int getDurationSeconds() {
+    return track.durationSeconds();}
 
-  @Override
-  public int getTrackCount() {
-    return 1;
-  }
+    @Override
+    public int getTrackCount() {
+    return 1;}
 
-  @Override
-  public List<Track> flatten() {
+    @Override
+    public List<Track> flatten() {
     return Collections.singletonList(track);
-  }
+    }
 
 
 }
